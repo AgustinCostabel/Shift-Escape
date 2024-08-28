@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh7v4ky438t0a"]
+
+[ext_resource type="Script" path="res://Scripts/teleport_weapon.gd" id="1_cdgde"]
+[ext_resource type="Texture2D" uid="uid://n08g0c3wtcj6" path="res://Assets/Ninja Adventure - Asset Pack/Items/Weapons/Sai/Sprite.png" id="1_vkhid"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvjr5"]
+size = Vector2(6, 12)
+
+[node name="TeleportWeapon" type="Area2D"]
+script = ExtResource("1_cdgde")
+weapon_speed = 800
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_vkhid")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xvjr5")

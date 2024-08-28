@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bu3378hqimegr"]
+
+[ext_resource type="Texture2D" uid="uid://c3q0kogrr30fw" path="res://Assets/Ninja Adventure - Asset Pack/Actor/Characters/NinjaBlue/SpriteSheet.png" id="1_1eqow"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xnyrv"]
+radius = 7.07107
+
+[node name="Enemy" type="StaticBody2D" groups=["enemy"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_1eqow")
+hframes = 4
+vframes = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_xnyrv")
