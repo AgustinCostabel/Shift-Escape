@@ -6,9 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvjr5"]
 size = Vector2(6, 12)
 
-[node name="TeleportWeapon" type="Area2D"]
+[node name="TeleportWeapon" type="Area2D" groups=["weapon"]]
 script = ExtResource("1_cdgde")
-weapon_speed = 800
+weapon_speed = 600
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_vkhid")

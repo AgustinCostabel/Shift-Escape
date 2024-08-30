@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu3378hqimegr"]
+
+[ext_resource type="Script" path="res://Scripts/enemy_archer.gd" id="1_0towa"]
+[ext_resource type="Texture2D" uid="uid://cdt3i54d1d52f" path="res://Assets/Ninja Adventure - Asset Pack/Actor/Characters/SamuraiBlue/SpriteSheet.png" id="1_43pt4"]
+[ext_resource type="Texture2D" uid="uid://sttk0r34u43q" path="res://Assets/Ninja Adventure - Asset Pack/Items/Weapons/Bow2/Sprite.png" id="3_bxvr7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xnyrv"]
+radius = 7.07107
+
+[node name="EnemyArcher" type="StaticBody2D" groups=["enemy"]]
+script = ExtResource("1_0towa")
+speed_attack = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_43pt4")
+hframes = 4
+vframes = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_xnyrv")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." groups=["enemy"]]
+position = Vector2(3, 6)
+rotation = -1.5708
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_bxvr7")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvpxr0t1bdy3j"]
+
+[ext_resource type="Script" path="res://Scripts/arrow.gd" id="1_38eor"]
+[ext_resource type="Texture2D" uid="uid://lp3mk8os87ic" path="res://Assets/Ninja Adventure - Asset Pack/Items/Weapons/Bow/Arrow.png" id="1_53c42"]
+[ext_resource type="PackedScene" uid="uid://bk05baleccrk8" path="res://Scenes/killzone.tscn" id="3_6bnel"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gq8a3"]
+size = Vector2(11, 4)
+
+[node name="Arrow" type="Area2D"]
+script = ExtResource("1_38eor")
+weapon_speed = 300
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_53c42")
+
+[node name="Killzone" parent="." instance=ExtResource("3_6bnel")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_gq8a3")

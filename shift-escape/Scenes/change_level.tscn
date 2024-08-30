@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqee12xb7le4"]
+
+[ext_resource type="Script" path="res://Scripts/change_level.gd" id="1_xkv2w"]
+[ext_resource type="Texture2D" uid="uid://mj7gg6l3scb4" path="res://Assets/Ninja Adventure - Asset Pack/Items/Food/Onigiri.png" id="2_6v7y5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_883ih"]
+radius = 6.0
+
+[node name="ChangeLevel" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_xkv2w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6v7y5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_883ih")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

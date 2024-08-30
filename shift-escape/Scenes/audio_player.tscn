@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c24m3qyjgf6av"]
+
+[ext_resource type="Script" path="res://Scripts/audio_player.gd" id="1_5r05i"]
+[ext_resource type="AudioStream" uid="uid://d1j8rax0c7u2y" path="res://Assets/Ninja Adventure - Asset Pack/Musics/1 - Adventure Begin.ogg" id="1_8pqwu"]
+
+[node name="Audio_Player" type="AudioStreamPlayer"]
+stream = ExtResource("1_8pqwu")
+bus = &"Music"
+parameters/looping = true
+script = ExtResource("1_5r05i")

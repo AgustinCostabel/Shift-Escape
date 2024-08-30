@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://djbxrnm2va7pu"]
+
+[ext_resource type="Texture2D" uid="uid://wv6nuity28yy" path="res://Assets/Ninja Adventure - Asset Pack/FX/Smoke/Smoke/SpriteSheet.png" id="1_xbexx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n8gm1"]
+atlas = ExtResource("1_xbexx")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3s3s"]
+atlas = ExtResource("1_xbexx")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kso3g"]
+atlas = ExtResource("1_xbexx")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rn4i3"]
+atlas = ExtResource("1_xbexx")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vcgj"]
+atlas = ExtResource("1_xbexx")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lg3ow"]
+atlas = ExtResource("1_xbexx")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4lsx8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n8gm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3s3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kso3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rn4i3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vcgj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lg3ow")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"smoke",
+"speed": 10.0
+}]
+
+[node name="Smoke" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_4lsx8")
+animation = &"smoke"
