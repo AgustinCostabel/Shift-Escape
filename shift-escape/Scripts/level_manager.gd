@@ -4,6 +4,7 @@ var levels = [
 	"res://Scenes/Levels/game.tscn",
 	"res://Scenes/Levels/level_1.tscn",
 	"res://Scenes/Levels/level_2.tscn",
+	"res://Scenes/Levels/level_3.tscn",
 ]
 
 var current_level_index = 0

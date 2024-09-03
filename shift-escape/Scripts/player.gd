@@ -7,6 +7,9 @@ extends CharacterBody2D
 
 @onready var icon_weapon = get_parent().get_node("IconWeapon")
 @onready var icon_clock = get_parent().get_node("IconClock")
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var animation_tree: AnimationTree = $AnimationTree
+@onready var screen_shader: ColorRect = $"../Camera2D/CanvasLayer/ColorRect"
 
 var can_throw = true
 var can_stop_time = true
@@ -15,7 +18,11 @@ var return_normal_timer = 0
 var cooldown_stop_time = 0
 var direction
 var tp_weapon
-
+var is_fading_out
+		
+func _ready() -> void:
+	set_teleport_progress(0.0)
+	
 func get_input():
 	var input = Vector2()
 	if Input.is_action_pressed('move_right'):
@@ -32,7 +39,7 @@ func get_input():
 			throw()
 			can_throw = false
 			icon_weapon.self_modulate = Color("red")
-		else:
+		elif tp_weapon.weapon_speed <= 0:
 			tp_weapon.queue_free()
 			restore_weapon()
 		
@@ -57,6 +64,8 @@ func _process(delta):
 			Engine.time_scale = 1
 			return_normal_timer = 0
 			time_stoped = false
+			screen_shader.material.set("shader_parameter/alpha", 0)
+			screen_shader.material.set("shader_parameter/gray", 0)
 		
 
 func _physics_process(_delta):
@@ -65,7 +74,7 @@ func _physics_process(_delta):
 		velocity = direction.normalized()
 	else:
 		velocity = velocity.lerp(Vector2.ZERO, friction)
-		
+	
 	$AnimationTree.set("parameters/idle/blend_position", velocity)
 	
 	velocity = velocity * speed
@@ -79,6 +88,7 @@ func throw():
 	get_parent().add_child(tp_weapon)
 	
 func teleport():
+	teleport_animation()
 	position = tp_weapon.position
 	tp_weapon.queue_free()
 	restore_weapon()
@@ -88,10 +98,21 @@ func stop_time():
 	time_stoped = true
 	can_stop_time = false
 	icon_clock.self_modulate = Color("red")
+	screen_shader.material.set("shader_parameter/alpha", 1)
+	screen_shader.material.set("shader_parameter/gray", 4)
 	
 func restore_weapon():
 	can_throw = true
 	icon_weapon.self_modulate = Color("white")
 	
 func die():
-	print("die")
+	print("die")	
+	
+func teleport_animation():
+	var start_value = 0.0 if is_fading_out == true else 1.0
+	var end_value = 1.0 if is_fading_out == false else 0.0
+	var tween = get_tree().create_tween()
+	tween.tween_method(set_teleport_progress, start_value, end_value, 0.75)
+
+func set_teleport_progress(val: float):
+	sprite.material.set("shader_parameter/teleport_progress", val)

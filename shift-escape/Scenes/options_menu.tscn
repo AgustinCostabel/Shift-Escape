@@ -1720,6 +1720,7 @@ layout_mode = 2
 text = "Master Volume"
 
 [node name="Master_volume" type="HSlider" parent="VBoxContainer"]
+self_modulate = Color(0.771959, 0, 0.0888795, 1)
 layout_mode = 2
 max_value = 1.0
 step = 0.001

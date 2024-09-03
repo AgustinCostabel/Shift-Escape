@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://dptixmsudt8te"]
+[gd_scene load_steps=14 format=3 uid="uid://dptixmsudt8te"]
 
+[ext_resource type="Shader" path="res://Shaders/screen.gdshader" id="1_3lshd"]
 [ext_resource type="Texture2D" uid="uid://bs2a4y5i2ay2" path="res://Assets/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetElement.png" id="1_dgcrp"]
 [ext_resource type="PackedScene" uid="uid://dtjgcidrarbt7" path="res://Scenes/player.tscn" id="1_ktv44"]
 [ext_resource type="PackedScene" uid="uid://bu3378hqimegr" path="res://Scenes/enemy_archer.tscn" id="2_qjk5k"]
@@ -8,6 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://bigxh666riewc" path="res://Assets/clock.png" id="7_acmjo"]
 [ext_resource type="PackedScene" uid="uid://b23u4ow763y3f" path="res://Scenes/enemy.tscn" id="8_b6jq6"]
 [ext_resource type="PackedScene" uid="uid://c8mfjvhlrpyt5" path="res://Scenes/enemy_counter.tscn" id="9_kljdd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4n7lp"]
+shader = ExtResource("1_3lshd")
+shader_parameter/gray = 0.0
+shader_parameter/alpha = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aeaom"]
 texture = ExtResource("1_dgcrp")
@@ -821,6 +827,21 @@ sources/1 = SubResource("TileSetAtlasSource_w2iam")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D/CanvasLayer"]
+material = SubResource("ShaderMaterial_4n7lp")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ku3qp")

@@ -17,6 +17,5 @@ func _process(delta):
 	position += target_position * weapon_speed * delta
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player") && weapon_speed > 0:
+	if body.is_in_group("player"):
 		self.queue_free()
-		weapon_speed = 0
