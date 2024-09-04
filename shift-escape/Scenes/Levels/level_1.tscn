@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddg1vh1dw533x"]
+[gd_scene load_steps=14 format=3 uid="uid://ddg1vh1dw533x"]
 
 [ext_resource type="Shader" path="res://Shaders/screen.gdshader" id="1_cuk3v"]
 [ext_resource type="Texture2D" uid="uid://bs2a4y5i2ay2" path="res://Assets/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetElement.png" id="1_ojj3b"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://n08g0c3wtcj6" path="res://Assets/Ninja Adventure - Asset Pack/Items/Weapons/Sai/Sprite.png" id="3_46uht"]
 [ext_resource type="Texture2D" uid="uid://bigxh666riewc" path="res://Assets/clock.png" id="4_reani"]
 [ext_resource type="PackedScene" uid="uid://dtjgcidrarbt7" path="res://Scenes/player.tscn" id="5_pdg05"]
+[ext_resource type="Script" path="res://Scripts/label_timer.gd" id="6_6kbiv"]
 [ext_resource type="PackedScene" uid="uid://bu3378hqimegr" path="res://Scenes/enemy_archer.tscn" id="6_876ct"]
 [ext_resource type="PackedScene" uid="uid://c8mfjvhlrpyt5" path="res://Scenes/enemy_counter.tscn" id="6_y3u3x"]
 
@@ -13,6 +14,7 @@
 shader = ExtResource("1_cuk3v")
 shader_parameter/gray = 3.0
 shader_parameter/alpha = 0.0
+shader_parameter/distortion = null
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wshqg"]
 texture = ExtResource("1_ojj3b")
@@ -862,6 +864,17 @@ offset_right = 212.0
 offset_bottom = 584.0
 scale = Vector2(0.130881, 0.147209)
 texture = ExtResource("4_reani")
+
+[node name="LabelTimer" type="Label" parent="."]
+offset_left = -55.0
+offset_top = -65.0
+offset_right = 16.0
+offset_bottom = -28.0
+scale = Vector2(1.55117, 1.66112)
+text = "15"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_6kbiv")
 
 [node name="EnemyCounter" parent="." instance=ExtResource("6_y3u3x")]
 

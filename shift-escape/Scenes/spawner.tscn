@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://0bnm86ospsce"]
+
+[ext_resource type="Script" path="res://Scripts/spawner.gd" id="1_tgpun"]
+[ext_resource type="PackedScene" uid="uid://cfod53xla78jq" path="res://Scenes/shuriken.tscn" id="2_xfhtq"]
+
+[node name="Spawner" type="Node2D"]
+script = ExtResource("1_tgpun")
+spawn_item_scene = ExtResource("2_xfhtq")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

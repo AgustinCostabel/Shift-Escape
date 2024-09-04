@@ -1,0 +1,59 @@
+[gd_scene load_steps=10 format=3 uid="uid://wy5d2i44hskh"]
+
+[ext_resource type="Texture2D" uid="uid://ngnpdril1t4s" path="res://Assets/Ninja Adventure - Asset Pack/Actor/Characters/NinjaDark/SpriteSheet.png" id="1_ftipf"]
+[ext_resource type="Script" path="res://Scripts/ninja.gd" id="1_q3128"]
+[ext_resource type="PackedScene" uid="uid://0bnm86ospsce" path="res://Scenes/spawner.tscn" id="2_y1osm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ene6w"]
+atlas = ExtResource("1_ftipf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7wtf"]
+atlas = ExtResource("1_ftipf")
+region = Rect2(32, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4k7sv"]
+atlas = ExtResource("1_ftipf")
+region = Rect2(48, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jutn"]
+atlas = ExtResource("1_ftipf")
+region = Rect2(16, 96, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ts08g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ene6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7wtf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4k7sv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jutn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sxlos"]
+radius = 6.0
+
+[node name="Ninja" type="StaticBody2D" groups=["enemy"]]
+script = ExtResource("1_q3128")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ts08g")
+autoplay = "default"
+frame_progress = 0.593191
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_sxlos")
+
+[node name="Spawner" parent="." instance=ExtResource("2_y1osm")]
+timer = 0.3

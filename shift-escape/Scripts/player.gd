@@ -15,7 +15,7 @@ var can_throw = true
 var can_stop_time = true
 var time_stoped = false
 var return_normal_timer = 0
-var cooldown_stop_time = 0
+# var cooldown_stop_time = 0
 var direction
 var tp_weapon
 var is_fading_out
@@ -52,20 +52,21 @@ func get_input():
 	return input
 
 func _process(delta):
-	cooldown_stop_time += delta
-	if cooldown_stop_time > power_time_cooldown:
-		cooldown_stop_time = 0
-		can_stop_time = true
-		icon_clock.self_modulate = Color("white")
+	#cooldown_stop_time += delta
+	#if cooldown_stop_time > power_time_cooldown:
+	#	cooldown_stop_time = 0
+	#	can_stop_time = true
+	#	icon_clock.self_modulate = Color("white")
 	
 	if time_stoped:
 		return_normal_timer += delta
-		if return_normal_timer > 0.1:
+		if return_normal_timer > 0.3:
 			Engine.time_scale = 1
 			return_normal_timer = 0
 			time_stoped = false
 			screen_shader.material.set("shader_parameter/alpha", 0)
 			screen_shader.material.set("shader_parameter/gray", 0)
+			screen_shader.material.set("shader_parameter/distortion", 0)
 		
 
 func _physics_process(_delta):
@@ -94,12 +95,13 @@ func teleport():
 	restore_weapon()
 
 func stop_time():
-	Engine.time_scale = 0.05
+	Engine.time_scale = 0.1
 	time_stoped = true
 	can_stop_time = false
 	icon_clock.self_modulate = Color("red")
 	screen_shader.material.set("shader_parameter/alpha", 1)
 	screen_shader.material.set("shader_parameter/gray", 4)
+	screen_shader.material.set("shader_parameter/distortion", 0.005)
 	
 func restore_weapon():
 	can_throw = true

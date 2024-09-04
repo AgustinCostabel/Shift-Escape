@@ -22,6 +22,10 @@ LevelManager="*res://Scripts/level_manager.gd"
 GameManager="*res://Scripts/game_manager.gd"
 SoundPlayer="*res://Scenes/sound_player.tscn"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [input]
 
 move_up={

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dptixmsudt8te"]
+[gd_scene load_steps=17 format=3 uid="uid://dptixmsudt8te"]
 
 [ext_resource type="Shader" path="res://Shaders/screen.gdshader" id="1_3lshd"]
 [ext_resource type="Texture2D" uid="uid://bs2a4y5i2ay2" path="res://Assets/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetElement.png" id="1_dgcrp"]
@@ -9,13 +9,24 @@
 [ext_resource type="Texture2D" uid="uid://bigxh666riewc" path="res://Assets/clock.png" id="7_acmjo"]
 [ext_resource type="PackedScene" uid="uid://b23u4ow763y3f" path="res://Scenes/enemy.tscn" id="8_b6jq6"]
 [ext_resource type="PackedScene" uid="uid://c8mfjvhlrpyt5" path="res://Scenes/enemy_counter.tscn" id="9_kljdd"]
+[ext_resource type="Script" path="res://Scripts/label_timer.gd" id="10_d5ctg"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_13tl8"]
+frequency = 0.001
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yf58h"]
+seamless = true
+seamless_blend_skirt = 1.0
+noise = SubResource("FastNoiseLite_13tl8")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4n7lp"]
 shader = ExtResource("1_3lshd")
 shader_parameter/gray = 0.0
 shader_parameter/alpha = 0.0
+shader_parameter/distortion = 0.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_yf58h")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_aeaom"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m437j"]
 texture = ExtResource("1_dgcrp")
 0:0/0 = 0
 1:0/0 = 0
@@ -162,7 +173,7 @@ texture = ExtResource("1_dgcrp")
 4:3/size_in_atlas = Vector2i(2, 2)
 4:3/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w2iam"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6mr4f"]
 texture = ExtResource("2_twkjf")
 0:0/0 = 0
 1:0/0 = 0
@@ -820,8 +831,8 @@ texture = ExtResource("2_twkjf")
 
 [sub_resource type="TileSet" id="TileSet_ku3qp"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_aeaom")
-sources/1 = SubResource("TileSetAtlasSource_w2iam")
+sources/0 = SubResource("TileSetAtlasSource_m437j")
+sources/1 = SubResource("TileSetAtlasSource_6mr4f")
 
 [node name="Game" type="Node2D"]
 
@@ -863,6 +874,17 @@ offset_right = 212.0
 offset_bottom = 584.0
 scale = Vector2(0.130881, 0.147209)
 texture = ExtResource("7_acmjo")
+
+[node name="LabelTimer" type="Label" parent="."]
+offset_left = -56.0
+offset_top = -70.0
+offset_right = 15.0
+offset_bottom = -33.0
+scale = Vector2(1.55117, 1.66112)
+text = "15"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("10_d5ctg")
 
 [node name="EnemyCounter" parent="." instance=ExtResource("9_kljdd")]
 enemy_amount = 3

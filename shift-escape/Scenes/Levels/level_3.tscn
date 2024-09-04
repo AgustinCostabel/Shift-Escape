@@ -1,17 +1,20 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdngqroeine27"]
+[gd_scene load_steps=14 format=3 uid="uid://cdngqroeine27"]
 
 [ext_resource type="Shader" path="res://Shaders/screen.gdshader" id="1_a446l"]
 [ext_resource type="Texture2D" uid="uid://bs2a4y5i2ay2" path="res://Assets/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetElement.png" id="2_kge6b"]
 [ext_resource type="Texture2D" uid="uid://bx30hb4lyfsjv" path="res://Assets/Ninja Adventure - Asset Pack/Backgrounds/TilesetHouse.png" id="3_o2dpc"]
 [ext_resource type="Texture2D" uid="uid://n08g0c3wtcj6" path="res://Assets/Ninja Adventure - Asset Pack/Items/Weapons/Sai/Sprite.png" id="4_dujmr"]
 [ext_resource type="Texture2D" uid="uid://bigxh666riewc" path="res://Assets/clock.png" id="5_jvpew"]
+[ext_resource type="Script" path="res://Scripts/label_timer.gd" id="6_oh817"]
 [ext_resource type="PackedScene" uid="uid://c8mfjvhlrpyt5" path="res://Scenes/enemy_counter.tscn" id="6_w4lnd"]
 [ext_resource type="PackedScene" uid="uid://dtjgcidrarbt7" path="res://Scenes/player.tscn" id="7_tvjth"]
+[ext_resource type="PackedScene" uid="uid://wy5d2i44hskh" path="res://Scenes/ninja.tscn" id="9_u3wvk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_48i8l"]
 shader = ExtResource("1_a446l")
 shader_parameter/gray = 3.0
 shader_parameter/alpha = 0.0
+shader_parameter/distortion = null
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j1a6y"]
 texture = ExtResource("2_kge6b")
@@ -862,8 +865,28 @@ offset_bottom = 584.0
 scale = Vector2(0.130881, 0.147209)
 texture = ExtResource("5_jvpew")
 
+[node name="LabelTimer" type="Label" parent="."]
+offset_left = -55.0
+offset_top = -65.0
+offset_right = 16.0
+offset_bottom = -28.0
+scale = Vector2(1.55117, 1.66112)
+text = "15"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("6_oh817")
+
 [node name="EnemyCounter" parent="." instance=ExtResource("6_w4lnd")]
-enemy_amount = 6
+enemy_amount = 3
+
+[node name="Ninja" parent="." instance=ExtResource("9_u3wvk")]
+position = Vector2(190, -96)
+
+[node name="Ninja2" parent="." instance=ExtResource("9_u3wvk")]
+position = Vector2(-157, -52)
+
+[node name="Ninja3" parent="." instance=ExtResource("9_u3wvk")]
+position = Vector2(138, 92)
 
 [node name="Player" parent="." instance=ExtResource("7_tvjth")]
 position = Vector2(1, 128)

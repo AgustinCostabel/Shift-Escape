@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://cfod53xla78jq"]
+
+[ext_resource type="Script" path="res://Scripts/shuriken.gd" id="1_x6ywu"]
+[ext_resource type="PackedScene" uid="uid://bk05baleccrk8" path="res://Scenes/killzone.tscn" id="2_kq6bh"]
+[ext_resource type="Texture2D" uid="uid://cerf6406mwx16" path="res://Assets/Ninja Adventure - Asset Pack/FX/Projectile/BigShuriken.png" id="3_hh6qo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ylkl0"]
+radius = 9.05539
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7rwo"]
+atlas = ExtResource("3_hh6qo")
+region = Rect2(0, 0, 23, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqs7h"]
+atlas = ExtResource("3_hh6qo")
+region = Rect2(23, 0, 23, 23)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yyr0t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7rwo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqs7h")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sbdih"]
+radius = 5.0
+
+[node name="Shuriken" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_x6ywu")
+
+[node name="Killzone" parent="." instance=ExtResource("2_kq6bh")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+shape = SubResource("CircleShape2D_ylkl0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yyr0t")
+autoplay = "default"
+frame_progress = 0.647548
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sbdih")

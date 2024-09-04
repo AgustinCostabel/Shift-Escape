@@ -208,7 +208,7 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_pcqfn")
 anim_player = NodePath("../AnimationPlayer")
 parameters/current_length = 0.4
-parameters/current_position = 0.394894
+parameters/current_position = 0.181821
 parameters/current_delta = 0.00694444
 parameters/End/current_length = null
 parameters/End/current_position = null
@@ -217,7 +217,7 @@ parameters/Start/current_length = 0.0
 parameters/Start/current_position = 0.0
 parameters/Start/current_delta = 0.0
 parameters/idle/current_length = 0.4
-parameters/idle/current_position = 0.394894
+parameters/idle/current_position = 0.181821
 parameters/idle/current_delta = 0.00694444
 parameters/idle/blend_position = Vector2(-0.000807106, 0)
 parameters/idle/0/current_length = 0.4
@@ -236,7 +236,7 @@ parameters/idle/4/current_length = null
 parameters/idle/4/current_position = null
 parameters/idle/4/current_delta = null
 parameters/idle/5/current_length = 0.4
-parameters/idle/5/current_position = 0.394894
+parameters/idle/5/current_position = 0.181821
 parameters/idle/5/current_delta = 0.00694444
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]

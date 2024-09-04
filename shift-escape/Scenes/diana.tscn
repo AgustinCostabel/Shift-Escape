@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7sx52ovpn04b"]
+
+[ext_resource type="Script" path="res://Scripts/diana.gd" id="1_hk6ht"]
+[ext_resource type="Texture2D" uid="uid://dh3py43a1u3nk" path="res://Assets/Ninja Adventure - Asset Pack/Actor/Characters/Tengu/SpriteSheet.png" id="1_og41h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vum5l"]
+radius = 7.07107
+
+[node name="Diana" type="StaticBody2D" groups=["enemy"]]
+script = ExtResource("1_hk6ht")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_og41h")
+hframes = 4
+vframes = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vum5l")
+
+[node name="Label" type="Label" parent="."]
+self_modulate = Color(0.69794, 0, 0.061293, 1)
+offset_left = -47.0
+offset_top = -32.0
+offset_right = 52.0
+offset_bottom = -9.0
+text = "Try to hit me!"
+horizontal_alignment = 1
+vertical_alignment = 1
