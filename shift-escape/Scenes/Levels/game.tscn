@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dptixmsudt8te"]
+[gd_scene load_steps=18 format=3 uid="uid://dptixmsudt8te"]
 
 [ext_resource type="Shader" path="res://Shaders/screen.gdshader" id="1_3lshd"]
 [ext_resource type="Texture2D" uid="uid://bs2a4y5i2ay2" path="res://Assets/Ninja Adventure - Asset Pack/Backgrounds/Tilesets/TilesetElement.png" id="1_dgcrp"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b23u4ow763y3f" path="res://Scenes/enemy.tscn" id="8_b6jq6"]
 [ext_resource type="PackedScene" uid="uid://c8mfjvhlrpyt5" path="res://Scenes/enemy_counter.tscn" id="9_kljdd"]
 [ext_resource type="Script" path="res://Scripts/label_timer.gd" id="10_d5ctg"]
+[ext_resource type="PackedScene" uid="uid://crrhumxma1xog" path="res://Scenes/pause_menu.tscn" id="11_yc3a6"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_13tl8"]
 frequency = 0.001
@@ -900,3 +901,14 @@ position = Vector2(236, -126)
 
 [node name="Enemy" parent="." instance=ExtResource("8_b6jq6")]
 position = Vector2(-2, -75)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(28.64, 16.16)
+color = Color(0, 0, 0, 0.435294)
+
+[node name="pause_menu" parent="CanvasLayer" instance=ExtResource("11_yc3a6")]
+metadata/_edit_use_anchors_ = true

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://djj7ncwovj3nn"]
+
+[ext_resource type="Script" path="res://Scripts/teleport_weapon_2.gd" id="1_e1fvg"]
+[ext_resource type="Texture2D" uid="uid://c4iwkli6oe1f4" path="res://Assets/Ninja Adventure - Asset Pack/FX/Projectile/BigKunai.png" id="1_xo5eu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ceqkb"]
+size = Vector2(6, 12)
+
+[node name="TeleportWeapon_2" type="Area2D" groups=["weapon"]]
+script = ExtResource("1_e1fvg")
+weapon_speed = 600
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 1)
+rotation = -1.5708
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_xo5eu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ceqkb")

@@ -8,7 +8,7 @@ void fragment() {
 	vec2 enlarged_uv = vec2(UV.x * 0.90 + 0.05, UV.y * 0.90 + 0.05);
 	vec4 pixel_color = texture(TEXTURE, enlarged_uv);
 	pixel_color.a *= float(mod(UV.x, 0.02) <= 0.002);
-	
+
 	vec4 base_tex = COLOR;
 	base_tex.a *= texture(transparency_curve, vec2(teleport_progress)).r;
 	float mix_curve = texture(teleport_curve, vec2(teleport_progress)).r;

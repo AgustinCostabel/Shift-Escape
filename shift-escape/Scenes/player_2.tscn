@@ -1,30 +1,30 @@
-[gd_scene load_steps=27 format=3 uid="uid://dtjgcidrarbt7"]
+[gd_scene load_steps=27 format=3 uid="uid://c6778f78u1a8l"]
 
-[ext_resource type="Texture2D" uid="uid://c3wupjt1hm35q" path="res://Assets/Ninja Adventure - Asset Pack/Actor/Characters/OldMan3/SpriteSheet.png" id="1_e0ry4"]
-[ext_resource type="Shader" path="res://Shaders/teleport_sh.gdshader" id="1_gpd6j"]
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_vipr5"]
+[ext_resource type="Shader" path="res://Shaders/teleport_sh.gdshader" id="1_d54oi"]
+[ext_resource type="Script" path="res://Scripts/player_2.gd" id="1_r7tfn"]
+[ext_resource type="Texture2D" uid="uid://1t356x7gklm4" path="res://Assets/Ninja Adventure - Asset Pack/Actor/Characters/Hunter/SpriteSheet.png" id="2_604un"]
 
-[sub_resource type="Curve" id="Curve_hexge"]
+[sub_resource type="Curve" id="Curve_10oiv"]
 _data = [Vector2(0.116466, 0), 0.0, 0.0, 0, 0, Vector2(0.120492, 1), 0.0, 0.0, 0, 0, Vector2(0.253012, 1), 0.0, 0.0, 0, 0, Vector2(0.293173, 0), 0.0, 0.0, 0, 0, Vector2(0.413655, 0), 0.0, 0.0, 0, 0, Vector2(0.453815, 1), 0.0, 0.0, 0, 0, Vector2(0.570281, 1), 0.0, 0.0, 0, 0, Vector2(0.650602, 0), 0.0, 0.0, 0, 0, Vector2(0.771084, 0), 0.0, 0.0, 0, 0, Vector2(0.799197, 1), 0.0, 0.0, 0, 0, Vector2(0.899598, 1), 0.0, 0.0, 0, 0, Vector2(0.947791, 0), 0.0, 0.0, 0, 0]
 point_count = 12
 
-[sub_resource type="CurveTexture" id="CurveTexture_mrhvt"]
+[sub_resource type="CurveTexture" id="CurveTexture_mtel1"]
 texture_mode = 1
-curve = SubResource("Curve_hexge")
+curve = SubResource("Curve_10oiv")
 
-[sub_resource type="Curve" id="Curve_idhfj"]
+[sub_resource type="Curve" id="Curve_6tjsa"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.4, 1), 0.0, 0.0, 0, 0, Vector2(0.448649, 0), 0.0933114, 0.0933114, 0, 0, Vector2(0.52973, 0), 0.0, 0.0, 0, 0, Vector2(0.572973, 1), 0.0, 0.0, 0, 0, Vector2(0.67027, 1), -0.404346, -0.404346, 0, 0, Vector2(0.722523, 0.00198543), 0.0, 0.0, 0, 0, Vector2(0.783132, 0.00252962), 0.0802745, 0.0802745, 0, 0, Vector2(0.811245, 1), 0.0, 0.0, 0, 0, Vector2(0.879279, 1), 0.0, 0.0, 0, 0, Vector2(0.955823, 0), 0.0, 0.0, 0, 0]
 point_count = 11
 
-[sub_resource type="CurveTexture" id="CurveTexture_w1aqw"]
+[sub_resource type="CurveTexture" id="CurveTexture_ddg1r"]
 texture_mode = 1
-curve = SubResource("Curve_idhfj")
+curve = SubResource("Curve_6tjsa")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_67jbi"]
-shader = ExtResource("1_gpd6j")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bk52f"]
+shader = ExtResource("1_d54oi")
 shader_parameter/teleport_progress = 0.0
-shader_parameter/transparency_curve = SubResource("CurveTexture_w1aqw")
-shader_parameter/teleport_curve = SubResource("CurveTexture_mrhvt")
+shader_parameter/transparency_curve = SubResource("CurveTexture_ddg1r")
+shader_parameter/teleport_curve = SubResource("CurveTexture_mtel1")
 
 [sub_resource type="Animation" id="Animation_h3qae"]
 length = 0.8
@@ -176,7 +176,7 @@ blend_mode = 1
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4k6u3"]
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_pcqfn"]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0rqx2"]
 states/End/position = Vector2(818, 99)
 states/Start/position = Vector2(315, 130)
 states/idle/node = SubResource("AnimationNodeBlendSpace2D_iyt86")
@@ -184,17 +184,17 @@ states/idle/position = Vector2(480, 130)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_4k6u3")]
 graph_offset = Vector2(0, -1)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bucwc"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_5c3pj"]
 radius = 5.0
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player_2" type="CharacterBody2D" groups=["player_2"]]
 collision_layer = 2
-script = ExtResource("1_vipr5")
+script = ExtResource("1_r7tfn")
 speed = 200
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_67jbi")
-texture = ExtResource("1_e0ry4")
+material = SubResource("ShaderMaterial_bk52f")
+texture = ExtResource("2_604un")
 hframes = 4
 vframes = 7
 region_rect = Rect2(0, 0, 16.6308, 16.8067)
@@ -205,10 +205,10 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_pcqfn")
+tree_root = SubResource("AnimationNodeStateMachine_0rqx2")
 anim_player = NodePath("../AnimationPlayer")
 parameters/current_length = 0.4
-parameters/current_position = 0.142494
+parameters/current_position = 0.237523
 parameters/current_delta = 0.00694444
 parameters/End/current_length = null
 parameters/End/current_position = null
@@ -217,7 +217,7 @@ parameters/Start/current_length = 0.0
 parameters/Start/current_position = 0.0
 parameters/Start/current_delta = 0.0
 parameters/idle/current_length = 0.4
-parameters/idle/current_position = 0.142494
+parameters/idle/current_position = 0.237523
 parameters/idle/current_delta = 0.00694444
 parameters/idle/blend_position = Vector2(-0.000807106, 0)
 parameters/idle/0/current_length = 0.4
@@ -236,9 +236,9 @@ parameters/idle/4/current_length = null
 parameters/idle/4/current_position = null
 parameters/idle/4/current_delta = null
 parameters/idle/5/current_length = 0.4
-parameters/idle/5/current_position = 0.142494
+parameters/idle/5/current_position = 0.237523
 parameters/idle/5/current_delta = 0.00694444
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
-shape = SubResource("CircleShape2D_bucwc")
+shape = SubResource("CircleShape2D_5c3pj")

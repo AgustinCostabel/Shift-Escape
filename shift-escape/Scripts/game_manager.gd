@@ -5,6 +5,11 @@ var spawned = false
 var timer = 15
 var timer_max = 15
 var stop_timer = true
+
+var type_controller = "K"
+
+func _ready() -> void:
+	print(type_controller)
 	
 func _process(_delta: float) -> void:
 	
@@ -23,7 +28,6 @@ func _process(_delta: float) -> void:
 		LevelManager.restart_level()	
 		
 func kill_enemy():
-	print(enemy_amount)
 	enemy_amount = enemy_amount - 1
 
 func change_enemy_amount(em):
@@ -38,3 +42,7 @@ func get_timer() -> int:
 func restart_timer():
 	timer = timer_max
 	stop_timer = false
+	
+func change_type_controller(c: String):
+	type_controller = c
+	

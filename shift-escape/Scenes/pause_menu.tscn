@@ -1,0 +1,108 @@
+[gd_scene load_steps=5 format=3 uid="uid://crrhumxma1xog"]
+
+[ext_resource type="Script" path="res://Scripts/volume_slider.gd" id="1_xwdux"]
+[ext_resource type="Script" path="res://Scripts/resolutions.gd" id="3_wo00u"]
+[ext_resource type="Script" path="res://Scripts/controller.gd" id="4_44hqa"]
+[ext_resource type="Script" path="res://Scripts/full_screen.gd" id="4_hw2v1"]
+
+[node name="pause_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 310.0
+offset_top = 172.0
+offset_right = 428.0
+offset_bottom = 309.0
+scale = Vector2(1.40087, 1.26245)
+
+[node name="Label_Master" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Master Volume"
+
+[node name="Master_volume" type="HSlider" parent="VBoxContainer"]
+self_modulate = Color(0.771959, 0, 0.0888795, 1)
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("1_xwdux")
+bus_name = "Master"
+
+[node name="Label_Music" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Music Volume"
+
+[node name="Music_volume" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("1_xwdux")
+bus_name = "Music"
+
+[node name="Label_SFX" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "SFX Volume"
+
+[node name="SFX_volume" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+max_value = 1.0
+step = 0.001
+script = ExtResource("1_xwdux")
+bus_name = "SFX"
+
+[node name="Resolutions" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 617.0
+offset_top = 213.0
+offset_right = 649.0
+offset_bottom = 233.0
+script = ExtResource("3_wo00u")
+
+[node name="Label_Resolutions" type="Label" parent="Resolutions"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -38.0
+offset_right = 90.0
+offset_bottom = -15.0
+text = "Resolutions"
+
+[node name="Controller" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 614.0
+offset_top = 308.0
+offset_right = 784.0
+offset_bottom = 335.0
+script = ExtResource("4_44hqa")
+
+[node name="Label_Controllers" type="Label" parent="Controller"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -30.0
+offset_right = 80.0
+offset_bottom = -7.0
+text = "Controller"
+
+[node name="FullScreen" type="CheckButton" parent="."]
+offset_left = 825.0
+offset_top = 211.0
+offset_right = 869.0
+offset_bottom = 235.0
+script = ExtResource("4_hw2v1")
+
+[node name="Label_FullScreen" type="Label" parent="FullScreen"]
+layout_mode = 0
+offset_left = -17.0
+offset_top = -34.0
+offset_right = 63.0
+offset_bottom = -11.0
+text = "FullScreen"
+
+[connection signal="value_changed" from="VBoxContainer/Master_volume" to="VBoxContainer/Master_volume" method="_on_value_changed"]
+[connection signal="item_selected" from="Resolutions" to="Resolutions" method="_on_item_selected"]
+[connection signal="item_selected" from="Controller" to="Controller" method="_on_item_selected"]
+[connection signal="toggled" from="FullScreen" to="FullScreen" method="_on_toggled"]

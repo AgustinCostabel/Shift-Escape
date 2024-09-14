@@ -1,9 +1,9 @@
 extends CharacterBody2D
 
-@export var player_index = 0
+@export var player_index = 1
 @export var speed = 150
 @export var friction = 1
-@export var weapon_scene = load("res://Scenes/teleport_weapon.tscn")
+@export var weapon_scene = load("res://Scenes/teleport_weapon_2.tscn")
 @export var power_time_cooldown = 5
 
 @onready var icon_weapon = get_parent().get_node("IconWeapon")
@@ -11,7 +11,6 @@ extends CharacterBody2D
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var screen_shader: ColorRect = $"../Camera2D/CanvasLayer/ColorRect"
-@onready var options: CanvasLayer = $"../CanvasLayer"
 
 var can_throw = true
 var can_stop_time = true
@@ -19,48 +18,39 @@ var time_stoped = false
 var return_normal_timer = 0
 # var cooldown_stop_time = 0
 var direction
-var tp_weapon
+var tp_weapon_2
 var is_fading_out
-var game_paused = false
 
 var controller: String
 var right_analog_axis
-
 		
 func _ready() -> void:
 	set_teleport_progress(0.0)
-	options.hide()
+	controller = GameManager.type_controller
 	
 func get_input():
 	var input = Vector2()
-	if Input.is_action_pressed('move_right'):
+	if Input.is_action_pressed('move_right_2'):
 		input.x += 1
-	if Input.is_action_pressed('move_left'):
+	if Input.is_action_pressed('move_left_2'):
 		input.x -= 1
-	if Input.is_action_pressed('move_down'):
+	if Input.is_action_pressed('move_down_2'):
 		input.y += 1
-	if Input.is_action_pressed('move_up'):
+	if Input.is_action_pressed('move_up_2'):
 		input.y -= 1
 		
-	if Input.is_action_just_pressed("throw") and !game_paused:
+	if Input.is_action_just_pressed("throw"):
 		if can_throw:
 			throw()
+		elif tp_weapon_2.weapon_speed <= 0:
+			tp_weapon_2.queue_free()
+			restore_weapon()
 		
-	if Input.is_action_just_pressed("teleport") and !can_throw and !game_paused:
+	if Input.is_action_just_pressed("teleport") && !can_throw:
 		teleport()
 		
-	if Input.is_action_just_pressed("stop_time") and can_stop_time and !game_paused:
+	if Input.is_action_just_pressed("stop_time") && can_stop_time:
 		stop_time()
-	
-	if Input.is_action_just_pressed("options"):
-		if !game_paused:
-			options.show()
-			Engine.time_scale = 0
-			game_paused = true
-		else:
-			options.hide()
-			Engine.time_scale = 1
-			game_paused = false
 		
 	return input
 
@@ -70,12 +60,14 @@ func _process(delta):
 	#	cooldown_stop_time = 0
 	#	can_stop_time = true
 	#	icon_clock.self_modulate = Color("white")
-	controller = GameManager.type_controller
-	
 	right_analog_axis = Vector2(Input.get_joy_axis(player_index, JOY_AXIS_RIGHT_X), Input.get_joy_axis(player_index, JOY_AXIS_RIGHT_Y))
+		
 	if(right_analog_axis != Vector2(0,0)):
 		if can_throw:
 			throw()
+		elif tp_weapon_2.weapon_speed <= 0:
+			tp_weapon_2.queue_free()
+			restore_weapon()
 	
 	if time_stoped:
 		return_normal_timer += delta
@@ -103,25 +95,25 @@ func _physics_process(_delta):
 
 func throw():
 	if controller == "K":
-		tp_weapon = weapon_scene.instantiate()
-		tp_weapon.global_position = position
-		tp_weapon.weapon_direction = (position - get_global_mouse_position()).normalized()
-		get_parent().add_child(tp_weapon)
+		tp_weapon_2 = weapon_scene.instantiate()
+		tp_weapon_2.global_position = position
+		tp_weapon_2.weapon_direction = (position - get_global_mouse_position()).normalized()
+		get_parent().add_child(tp_weapon_2)
 		can_throw = false
 		icon_weapon.self_modulate = Color("red")
 	
 	if controller == "C":
-		tp_weapon = weapon_scene.instantiate()
-		tp_weapon.global_position = position
-		tp_weapon.weapon_direction = (right_analog_axis * -1).normalized()
-		get_parent().add_child(tp_weapon)
+		tp_weapon_2 = weapon_scene.instantiate()
+		tp_weapon_2.global_position = position
+		tp_weapon_2.weapon_direction = (right_analog_axis * -1).normalized()
+		get_parent().add_child(tp_weapon_2)
 		can_throw = false
 		icon_weapon.self_modulate = Color("red")
 	
 func teleport():
 	teleport_animation()
-	position = tp_weapon.position
-	tp_weapon.queue_free()
+	position = tp_weapon_2.position
+	tp_weapon_2.queue_free()
 	restore_weapon()
 
 func stop_time():
@@ -148,6 +140,3 @@ func teleport_animation():
 
 func set_teleport_progress(val: float):
 	sprite.material.set("shader_parameter/teleport_progress", val)
-
-func change_controller(c: String):
-	controller = c

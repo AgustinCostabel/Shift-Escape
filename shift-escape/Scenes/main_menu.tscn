@@ -1,9 +1,10 @@
-[gd_scene load_steps=246 format=3 uid="uid://618t2cwrfdh7"]
+[gd_scene load_steps=247 format=3 uid="uid://618t2cwrfdh7"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_mcopu"]
 [ext_resource type="Texture2D" uid="uid://dkrmf12g6xvkf" path="res://Assets/UI/PNG/Default/button_red.png" id="1_rfsoe"]
 [ext_resource type="Texture2D" uid="uid://bkybcnc5e2axf" path="res://Assets/UI/PNG/Default/button_grey.png" id="2_a7x0p"]
 [ext_resource type="Texture2D" uid="uid://3xa18uqeinq2" path="res://Assets/Background Frames.png" id="2_fchai"]
+[ext_resource type="Script" path="res://Scripts/grab_focus.gd" id="4_u80m1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gn4u1"]
 atlas = ExtResource("2_fchai")
@@ -1722,6 +1723,7 @@ layout_mode = 2
 text = "PLAY"
 icon = ExtResource("2_a7x0p")
 icon_alignment = 1
+script = ExtResource("4_u80m1")
 
 [node name="Button_Options" type="Button" parent="VBoxContainer"]
 layout_mode = 2

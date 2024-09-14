@@ -1,9 +1,12 @@
-[gd_scene load_steps=246 format=3 uid="uid://d2lni4vxx7n8q"]
+[gd_scene load_steps=249 format=3 uid="uid://d2lni4vxx7n8q"]
 
-[ext_resource type="Script" path="res://Scripts/options_menu.gd" id="1_e22rn"]
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_hg8ml"]
 [ext_resource type="Script" path="res://Scripts/volume_slider.gd" id="1_lrykw"]
 [ext_resource type="Texture2D" uid="uid://3xa18uqeinq2" path="res://Assets/Background Frames.png" id="2_2tmhh"]
 [ext_resource type="Script" path="res://Scripts/resolutions.gd" id="4_3laa3"]
+[ext_resource type="Script" path="res://Scripts/grab_focus.gd" id="4_o22bb"]
+[ext_resource type="Script" path="res://Scripts/controller.gd" id="6_cgo8s"]
+[ext_resource type="Script" path="res://Scripts/full_screen.gd" id="7_f83jp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gn4u1"]
 atlas = ExtResource("2_2tmhh")
@@ -1700,7 +1703,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_e22rn")
+script = ExtResource("1_hg8ml")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.439049, 0.439049, 0.439049, 0.364706)
@@ -1758,6 +1761,7 @@ offset_top = 529.0
 offset_right = 581.0
 offset_bottom = 560.0
 text = "Main Menu"
+script = ExtResource("4_o22bb")
 
 [node name="Resolutions" type="OptionButton" parent="."]
 layout_mode = 0
@@ -1775,6 +1779,40 @@ offset_right = 90.0
 offset_bottom = -15.0
 text = "Resolutions"
 
+[node name="Controller" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 614.0
+offset_top = 308.0
+offset_right = 784.0
+offset_bottom = 335.0
+script = ExtResource("6_cgo8s")
+
+[node name="Label_Controllers" type="Label" parent="Controller"]
+layout_mode = 0
+offset_left = 1.0
+offset_top = -30.0
+offset_right = 80.0
+offset_bottom = -7.0
+text = "Controller"
+
+[node name="FullScreen" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 825.0
+offset_top = 211.0
+offset_right = 869.0
+offset_bottom = 235.0
+script = ExtResource("7_f83jp")
+
+[node name="Label_FullScreen" type="Label" parent="FullScreen"]
+layout_mode = 0
+offset_left = -17.0
+offset_top = -34.0
+offset_right = 63.0
+offset_bottom = -11.0
+text = "FullScreen"
+
 [connection signal="value_changed" from="VBoxContainer/Master_volume" to="VBoxContainer/Master_volume" method="_on_value_changed"]
-[connection signal="pressed" from="Button_Menu" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button_Menu" to="." method="_on_button_menu_pressed"]
 [connection signal="item_selected" from="Resolutions" to="Resolutions" method="_on_item_selected"]
+[connection signal="item_selected" from="Controller" to="Controller" method="_on_item_selected"]
+[connection signal="toggled" from="FullScreen" to="FullScreen" method="_on_toggled"]
