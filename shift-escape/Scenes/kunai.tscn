@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpc1i2jypa1xx"]
+
+[ext_resource type="Script" path="res://Scripts/kunai.gd" id="1_1c1sl"]
+[ext_resource type="PackedScene" uid="uid://bk05baleccrk8" path="res://Scenes/killzone.tscn" id="1_248l4"]
+[ext_resource type="Texture2D" uid="uid://bhwuxgh2k8ori" path="res://Assets/Ninja Adventure - Asset Pack/FX/Projectile/Kunai.png" id="2_pt2jw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wfnve"]
+size = Vector2(12, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_unu1a"]
+size = Vector2(2, 2)
+
+[node name="Kunai" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_1c1sl")
+time_max = 5
+
+[node name="Killzone" parent="." instance=ExtResource("1_248l4")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+shape = SubResource("RectangleShape2D_wfnve")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_unu1a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pt2jw")

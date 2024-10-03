@@ -24,4 +24,3 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy") && weapon_speed > 0:
 		body.die()
 		weapon_speed = 0
-		GameManager.kill_enemy()

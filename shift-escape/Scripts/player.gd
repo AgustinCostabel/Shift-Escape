@@ -17,11 +17,11 @@ var can_throw = true
 var can_stop_time = true
 var time_stoped = false
 var return_normal_timer = 0
-# var cooldown_stop_time = 0
 var direction
 var tp_weapon
 var is_fading_out
 var game_paused = false
+var in_cutscene = false
 
 var controller: String
 var right_analog_axis
@@ -33,48 +33,44 @@ func _ready() -> void:
 	
 func get_input():
 	var input = Vector2()
-	if Input.is_action_pressed('move_right'):
-		input.x += 1
-	if Input.is_action_pressed('move_left'):
-		input.x -= 1
-	if Input.is_action_pressed('move_down'):
-		input.y += 1
-	if Input.is_action_pressed('move_up'):
-		input.y -= 1
+	if !in_cutscene:
+		if Input.is_action_pressed('move_right'):
+			input.x += 1
+		if Input.is_action_pressed('move_left'):
+			input.x -= 1
+		if Input.is_action_pressed('move_down'):
+			input.y += 1
+		if Input.is_action_pressed('move_up'):
+			input.y -= 1
+			
+		if Input.is_action_just_pressed("throw") and !game_paused:
+			if can_throw:
+				throw()
+			
+		if Input.is_action_just_pressed("teleport") and !can_throw and !game_paused:
+			teleport()
+			
+		if Input.is_action_just_pressed("stop_time") and can_stop_time and !game_paused:
+			stop_time()
 		
-	if Input.is_action_just_pressed("throw") and !game_paused:
-		if can_throw:
-			throw()
-		
-	if Input.is_action_just_pressed("teleport") and !can_throw and !game_paused:
-		teleport()
-		
-	if Input.is_action_just_pressed("stop_time") and can_stop_time and !game_paused:
-		stop_time()
-	
-	if Input.is_action_just_pressed("options"):
-		if !game_paused:
-			options.show()
-			Engine.time_scale = 0
-			game_paused = true
-		else:
-			options.hide()
-			Engine.time_scale = 1
-			game_paused = false
+		if Input.is_action_just_pressed("options"):
+			if !game_paused:
+				options.show()
+				Engine.time_scale = 0
+				game_paused = true
+			else:
+				options.hide()
+				Engine.time_scale = 1
+				game_paused = false
 		
 	return input
 
 func _process(delta):
-	#cooldown_stop_time += delta
-	#if cooldown_stop_time > power_time_cooldown:
-	#	cooldown_stop_time = 0
-	#	can_stop_time = true
-	#	icon_clock.self_modulate = Color("white")
 	controller = GameManager.type_controller
 	
 	right_analog_axis = Vector2(Input.get_joy_axis(player_index, JOY_AXIS_RIGHT_X), Input.get_joy_axis(player_index, JOY_AXIS_RIGHT_Y))
 	if(right_analog_axis != Vector2(0,0)):
-		if can_throw:
+		if can_throw and !in_cutscene:
 			throw()
 	
 	if time_stoped:
@@ -137,9 +133,6 @@ func restore_weapon():
 	can_throw = true
 	icon_weapon.self_modulate = Color("white")
 	
-func die():
-	print("die")	
-	
 func teleport_animation():
 	var start_value = 0.0 if is_fading_out == true else 1.0
 	var end_value = 1.0 if is_fading_out == false else 0.0
@@ -151,3 +144,10 @@ func set_teleport_progress(val: float):
 
 func change_controller(c: String):
 	controller = c
+	
+func pause():
+	in_cutscene = true
+	
+func unpause():
+	in_cutscene = false
+	

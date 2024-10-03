@@ -19,4 +19,5 @@ func die():
 	smoke_instance.position = position
 	smoke_instance.play("smoke")
 	SoundPlayer.play_sound_hit()
+	GameManager.kill_enemy()
 	queue_free()

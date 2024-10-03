@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcvm3fegsax5j"]
+
+[ext_resource type="Texture2D" uid="uid://dxehjnmdogaf6" path="res://Assets/Ninja Adventure - Asset Pack/Actor/Characters/NinjaGray/SpriteSheet.png" id="1_3ykj2"]
+[ext_resource type="Script" path="res://Scripts/boss.gd" id="1_ett26"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x2jnq"]
+radius = 7.07107
+
+[node name="Boss" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_ett26")
+speed_clone = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3ykj2")
+hframes = 4
+vframes = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_x2jnq")

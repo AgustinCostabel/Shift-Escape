@@ -1,6 +1,5 @@
-[gd_scene load_steps=249 format=3 uid="uid://d2lni4vxx7n8q"]
+[gd_scene load_steps=248 format=3 uid="uid://d2lni4vxx7n8q"]
 
-[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_hg8ml"]
 [ext_resource type="Script" path="res://Scripts/volume_slider.gd" id="1_lrykw"]
 [ext_resource type="Texture2D" uid="uid://3xa18uqeinq2" path="res://Assets/Background Frames.png" id="2_2tmhh"]
 [ext_resource type="Script" path="res://Scripts/resolutions.gd" id="4_3laa3"]
@@ -1703,7 +1702,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_hg8ml")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.439049, 0.439049, 0.439049, 0.364706)
@@ -1812,7 +1810,7 @@ offset_bottom = -11.0
 text = "FullScreen"
 
 [connection signal="value_changed" from="VBoxContainer/Master_volume" to="VBoxContainer/Master_volume" method="_on_value_changed"]
-[connection signal="pressed" from="Button_Menu" to="." method="_on_button_menu_pressed"]
+[connection signal="pressed" from="Button_Menu" to="Button_Menu" method="_on_pressed"]
 [connection signal="item_selected" from="Resolutions" to="Resolutions" method="_on_item_selected"]
 [connection signal="item_selected" from="Controller" to="Controller" method="_on_item_selected"]
 [connection signal="toggled" from="FullScreen" to="FullScreen" method="_on_toggled"]

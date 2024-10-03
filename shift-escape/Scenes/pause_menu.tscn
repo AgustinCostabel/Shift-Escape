@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://crrhumxma1xog"]
+[gd_scene load_steps=6 format=3 uid="uid://crrhumxma1xog"]
 
 [ext_resource type="Script" path="res://Scripts/volume_slider.gd" id="1_xwdux"]
 [ext_resource type="Script" path="res://Scripts/resolutions.gd" id="3_wo00u"]
 [ext_resource type="Script" path="res://Scripts/controller.gd" id="4_44hqa"]
 [ext_resource type="Script" path="res://Scripts/full_screen.gd" id="4_hw2v1"]
+[ext_resource type="Script" path="res://Scripts/grab_focus.gd" id="5_h0hnf"]
 
 [node name="pause_menu" type="Control"]
 layout_mode = 3
@@ -88,6 +89,7 @@ offset_bottom = -7.0
 text = "Controller"
 
 [node name="FullScreen" type="CheckButton" parent="."]
+layout_mode = 0
 offset_left = 825.0
 offset_top = 211.0
 offset_right = 869.0
@@ -102,7 +104,16 @@ offset_right = 63.0
 offset_bottom = -11.0
 text = "FullScreen"
 
+[node name="Button_Menu" type="Button" parent="."]
+offset_left = 530.0
+offset_top = 445.0
+offset_right = 626.0
+offset_bottom = 476.0
+text = "Main Menu"
+script = ExtResource("5_h0hnf")
+
 [connection signal="value_changed" from="VBoxContainer/Master_volume" to="VBoxContainer/Master_volume" method="_on_value_changed"]
 [connection signal="item_selected" from="Resolutions" to="Resolutions" method="_on_item_selected"]
 [connection signal="item_selected" from="Controller" to="Controller" method="_on_item_selected"]
 [connection signal="toggled" from="FullScreen" to="FullScreen" method="_on_toggled"]
+[connection signal="pressed" from="Button_Menu" to="Button_Menu" method="_on_pressed"]

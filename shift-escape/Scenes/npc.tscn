@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://cpttq8w6d3pnj"]
+
+[ext_resource type="Texture2D" uid="uid://dm24ujnp5dlek" path="res://Assets/Ninja Adventure - Asset Pack/Actor/Characters/Villager4/SpriteSheet.png" id="1_w5ulh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rd5ee"]
+atlas = ExtResource("1_w5ulh")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu4ts"]
+atlas = ExtResource("1_w5ulh")
+region = Rect2(0, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7m8f0"]
+atlas = ExtResource("1_w5ulh")
+region = Rect2(16, 96, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uxltp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rd5ee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qu4ts")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_7m8f0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rd5ee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qu4ts")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_to5ef"]
+size = Vector2(14, 14)
+
+[node name="NPC" type="StaticBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_uxltp")
+autoplay = "default"
+frame_progress = 0.0217617
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_to5ef")

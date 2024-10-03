@@ -1,0 +1,218 @@
+[gd_scene load_steps=23 format=3 uid="uid://co6hkx127w26e"]
+
+[ext_resource type="Script" path="res://Scripts/boss_clone.gd" id="1_xilks"]
+[ext_resource type="Texture2D" uid="uid://dxehjnmdogaf6" path="res://Assets/Ninja Adventure - Asset Pack/Actor/Characters/NinjaGray/SpriteSheet.png" id="2_q2fht"]
+[ext_resource type="Script" path="res://Scripts/shield.gd" id="3_3o8s1"]
+[ext_resource type="Texture2D" uid="uid://cmgqb2omtjx5d" path="res://Assets/Ninja Adventure - Asset Pack/FX/Magic/Shield/SpriteSheetBlue.png" id="4_iw8f2"]
+[ext_resource type="PackedScene" uid="uid://0bnm86ospsce" path="res://Scenes/spawner.tscn" id="5_dc0lt"]
+[ext_resource type="PackedScene" uid="uid://cpc1i2jypa1xx" path="res://Scenes/kunai.tscn" id="6_rq8fy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s6tty"]
+radius = 7.07107
+
+[sub_resource type="Animation" id="Animation_h3qae"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_evfsn"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2664, 0.4995, 0.7326),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 16, 27, 26]
+}
+
+[sub_resource type="Animation" id="Animation_yvlh4"]
+resource_name = "move_down"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 4, 8, 12]
+}
+
+[sub_resource type="Animation" id="Animation_38m3d"]
+resource_name = "move_left"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [2, 6, 10, 14]
+}
+
+[sub_resource type="Animation" id="Animation_sgsls"]
+resource_name = "move_right"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [3, 7, 11, 15]
+}
+
+[sub_resource type="Animation" id="Animation_mjri1"]
+resource_name = "move_up"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 5, 9, 13]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_okdr8"]
+_data = {
+"RESET": SubResource("Animation_h3qae"),
+"idle": SubResource("Animation_evfsn"),
+"move_down": SubResource("Animation_yvlh4"),
+"move_left": SubResource("Animation_38m3d"),
+"move_right": SubResource("Animation_sgsls"),
+"move_up": SubResource("Animation_mjri1")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjwsj"]
+atlas = ExtResource("4_iw8f2")
+region = Rect2(0, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wld3r"]
+atlas = ExtResource("4_iw8f2")
+region = Rect2(24, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aglr0"]
+atlas = ExtResource("4_iw8f2")
+region = Rect2(48, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7inw"]
+atlas = ExtResource("4_iw8f2")
+region = Rect2(72, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0h5qg"]
+atlas = ExtResource("4_iw8f2")
+region = Rect2(96, 0, 24, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jubj5"]
+atlas = ExtResource("4_iw8f2")
+region = Rect2(120, 0, 24, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yo2mo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjwsj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wld3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aglr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7inw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0h5qg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jubj5")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eu7n8"]
+
+[node name="Boss_Clone" type="CharacterBody2D" groups=["enemy"]]
+collision_mask = 2
+script = ExtResource("1_xilks")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_q2fht")
+hframes = 4
+vframes = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(0.839999, 0.92)
+shape = SubResource("CircleShape2D_s6tty")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_okdr8")
+}
+
+[node name="Shield" type="Area2D" parent="." groups=["shield"]]
+scale = Vector2(1.12, 1.32)
+script = ExtResource("3_3o8s1")
+max_hits = 10
+color_modulate = 0.1
+increase_anim_speed = 1.2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Shield"]
+sprite_frames = SubResource("SpriteFrames_yo2mo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shield"]
+position = Vector2(0, 1)
+scale = Vector2(1.32143, 1.30303)
+shape = SubResource("CircleShape2D_eu7n8")
+
+[node name="Spawner" parent="." instance=ExtResource("5_dc0lt")]
+spawn_item_scene = ExtResource("6_rq8fy")
+timer = 3.0
+
+[connection signal="area_entered" from="Shield" to="Shield" method="_on_area_entered"]

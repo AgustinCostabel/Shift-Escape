@@ -117,36 +117,36 @@ _data = {
 "move_up": SubResource("Animation_mjri1")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8x802"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_831bi"]
 animation = &"move_left"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_djgbp"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ptx26"]
 animation = &"move_down"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xuqyd"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lojep"]
 animation = &"move_right"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_clymf"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_obesw"]
 animation = &"move_up"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xxqba"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gsw1n"]
 animation = &"move_left"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hsl85"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gmwx1"]
 animation = &"idle"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_iyt86"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_8x802")
+blend_point_0/node = SubResource("AnimationNodeAnimation_831bi")
 blend_point_0/pos = Vector2(-1, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_djgbp")
+blend_point_1/node = SubResource("AnimationNodeAnimation_ptx26")
 blend_point_1/pos = Vector2(0, 0.9)
-blend_point_2/node = SubResource("AnimationNodeAnimation_xuqyd")
+blend_point_2/node = SubResource("AnimationNodeAnimation_lojep")
 blend_point_2/pos = Vector2(1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_clymf")
+blend_point_3/node = SubResource("AnimationNodeAnimation_obesw")
 blend_point_3/pos = Vector2(0, -0.9)
-blend_point_4/node = SubResource("AnimationNodeAnimation_xxqba")
+blend_point_4/node = SubResource("AnimationNodeAnimation_gsw1n")
 blend_point_4/pos = Vector2(-1, 0)
-blend_point_5/node = SubResource("AnimationNodeAnimation_hsl85")
+blend_point_5/node = SubResource("AnimationNodeAnimation_gmwx1")
 blend_point_5/pos = Vector2(0, 0)
 blend_mode = 1
 
@@ -161,6 +161,7 @@ states/idle/position = Vector2(464, 94)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_4k6u3")]
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+collision_mask = 2
 script = ExtResource("1_vgo00")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -186,8 +187,8 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_n7wkd")
 anim_player = NodePath("../AnimationPlayer")
 parameters/current_length = 0.8
-parameters/current_position = 0.496541
-parameters/current_delta = 0.007171
+parameters/current_position = 0.489563
+parameters/current_delta = 0.00690067
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
@@ -195,8 +196,8 @@ parameters/Start/current_length = 0.0
 parameters/Start/current_position = 0.0
 parameters/Start/current_delta = 0.0
 parameters/idle/current_length = 0.8
-parameters/idle/current_position = 0.496541
-parameters/idle/current_delta = 0.007171
+parameters/idle/current_position = 0.489563
+parameters/idle/current_delta = 0.00690067
 parameters/idle/blend_position = Vector2(0, 0.0102389)
 parameters/idle/0/current_length = 0.4
 parameters/idle/0/current_position = 0.102921
@@ -214,5 +215,5 @@ parameters/idle/4/current_length = null
 parameters/idle/4/current_position = null
 parameters/idle/4/current_delta = null
 parameters/idle/5/current_length = 0.8
-parameters/idle/5/current_position = 0.496541
-parameters/idle/5/current_delta = 0.007171
+parameters/idle/5/current_position = 0.489563
+parameters/idle/5/current_delta = 0.00690067

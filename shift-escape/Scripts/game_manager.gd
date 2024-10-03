@@ -7,9 +7,6 @@ var timer_max = 15
 var stop_timer = true
 
 var type_controller = "K"
-
-func _ready() -> void:
-	print(type_controller)
 	
 func _process(_delta: float) -> void:
 	
@@ -30,6 +27,9 @@ func _process(_delta: float) -> void:
 func kill_enemy():
 	enemy_amount = enemy_amount - 1
 
+func add_enemy():
+	enemy_amount = enemy_amount + 1
+	
 func change_enemy_amount(em):
 	enemy_amount = em
 
@@ -45,4 +45,10 @@ func restart_timer():
 	
 func change_type_controller(c: String):
 	type_controller = c
+	
+func _stop_timer():
+	stop_timer = true
+	
+func change_timer(n : int):
+	timer_max = n
 	
