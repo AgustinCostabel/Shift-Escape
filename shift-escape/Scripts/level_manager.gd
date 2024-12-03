@@ -11,7 +11,7 @@ var levels = [
 	"res://Scenes/Levels/credits.tscn",
 ]
 
-var current_level_index = 6
+var current_level_index = 0
 
 func load_level(index):
 	if index >= 0 and index < levels.size():

@@ -185,7 +185,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(0, -1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bucwc"]
-radius = 5.0
+radius = 4.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
@@ -208,8 +208,8 @@ libraries = {
 tree_root = SubResource("AnimationNodeStateMachine_pcqfn")
 anim_player = NodePath("../AnimationPlayer")
 parameters/current_length = 0.4
-parameters/current_position = 0.335437
-parameters/current_delta = 0.00126967
+parameters/current_position = 0.108332
+parameters/current_delta = 0.00694444
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
@@ -217,8 +217,8 @@ parameters/Start/current_length = 0.0
 parameters/Start/current_position = 0.0
 parameters/Start/current_delta = 0.0
 parameters/idle/current_length = 0.4
-parameters/idle/current_position = 0.335437
-parameters/idle/current_delta = 0.00126967
+parameters/idle/current_position = 0.108332
+parameters/idle/current_delta = 0.00694444
 parameters/idle/blend_position = Vector2(-0.000807106, 0)
 parameters/idle/0/current_length = 0.4
 parameters/idle/0/current_position = 0.165603
@@ -236,8 +236,8 @@ parameters/idle/4/current_length = null
 parameters/idle/4/current_position = null
 parameters/idle/4/current_delta = null
 parameters/idle/5/current_length = 0.4
-parameters/idle/5/current_position = 0.335437
-parameters/idle/5/current_delta = 0.00126967
+parameters/idle/5/current_position = 0.108332
+parameters/idle/5/current_delta = 0.00694444
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["player"]]
 position = Vector2(0, 2)
